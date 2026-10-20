@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Clio — Apoio à Pesquisa Histórica",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Salva a imagem carregada no DocReader da Biblioteca Nacional e copia os dados da consulta.",
   "permissions": [
     "activeTab",

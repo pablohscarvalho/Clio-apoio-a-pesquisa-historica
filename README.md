@@ -82,3 +82,7 @@ O ícone de livro e lupa acompanha o projeto em PNG nos tamanhos 16, 32, 48 e 12
 Encontrou um problema ou tem uma ideia? Abra uma **issue** no repositório, informando o que aconteceu, a versão da extensão e, quando possível, o link da página consultada.
 
 Autoria e contato: [@pablohscarvalho](https://www.instagram.com/pablohscarvalho/).
+
+## Correção 0.2.1
+
+O nome final pode ser editado diretamente. Ao escolher Personalizar nome, o campo recebe foco e o nome sugerido fica selecionado. Os campos de nome permanecem editáveis mesmo antes de a imagem ser identificada.

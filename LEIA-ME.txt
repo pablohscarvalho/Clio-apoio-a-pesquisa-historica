@@ -84,3 +84,6 @@ TESTES DESTA VERSÃO
 Sintaxe e fluxos de interface verificados com DOM e APIs Chrome simulados.
 Nomes padrão/personalizados, prévia, data local e ícones verificados.
 O teste integrado no navegador com o site real depende da instalação no Chrome.
+
+CORREÇÃO 0.2.1
+O nome final pode ser editado diretamente. Ao escolher Personalizar nome, o campo recebe foco e o nome sugerido fica selecionado. Os campos de nome permanecem editáveis mesmo antes de a imagem ser identificada.

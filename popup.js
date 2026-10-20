@@ -64,12 +64,12 @@ let downloadId = null;
 function updatePreview() {
   ui.standardFields.hidden = ui.custom.checked;
   ui.customFields.hidden = !ui.custom.checked;
-  ui.preview.textContent = source ? makeFilename(source, ui.custom.checked, ui.filename.value, ui.vehicle.value, ui.period.value) : "Aguardando página…";
+  ui.preview.value = source ? makeFilename(source, ui.custom.checked, ui.filename.value, ui.vehicle.value, ui.period.value) : ui.filename.value;
 }
 
 async function refresh() {
   source = null;
-  ui.download.disabled = ui.reference.disabled = ui.filename.disabled = true;
+  ui.download.disabled = ui.reference.disabled = true;
   ui.status.textContent = "";
   ui.details.textContent = "Identificando a imagem…";
   try {
@@ -84,7 +84,7 @@ async function refresh() {
     ui.vehicle.value = parts.vehicle;
     ui.period.value = parts.period;
     updatePreview();
-    ui.download.disabled = ui.reference.disabled = ui.filename.disabled = false;
+    ui.download.disabled = ui.reference.disabled = false;
   } catch (error) {
     updatePreview();
     ui.details.textContent = "Página não identificada";
@@ -98,7 +98,7 @@ ui.download.addEventListener("click", async () => {
   ui.status.textContent = "Abrindo a janela para salvar…";
   try {
     const filename = makeFilename(source, ui.custom.checked, ui.filename.value, ui.vehicle.value, ui.period.value);
-    ui.preview.textContent = filename;
+    ui.preview.value = filename;
     downloadId = await chrome.downloads.download({url: source.url, filename, saveAs: true, conflictAction: "uniquify"});
     ui.status.textContent = "Download iniciado. Acompanhe também pelo painel de downloads do Chrome.";
     const [item] = await chrome.downloads.search({id: downloadId});
@@ -133,6 +133,23 @@ ui.reference.addEventListener("click", async () => {
 });
 
 for (const id of ["filename", "vehicle", "period"]) ui[id].addEventListener("input", updatePreview);
-for (const id of ["standard", "custom"]) ui[id].addEventListener("change", updatePreview);
+function selectCustomName() {
+  if (!ui.filename.value.trim() && source) {
+    ui.filename.value = makeFilename(source, false, "", ui.vehicle.value, ui.period.value).replace(/\.(jpe?g|png|webp|gif|tiff?)$/i, "");
+  }
+  updatePreview();
+  ui.filename.focus();
+  ui.filename.select();
+}
+ui.custom.addEventListener("change", selectCustomName);
+ui.standard.addEventListener("change", updatePreview);
+ui.preview.addEventListener("input", () => {
+  ui.custom.checked = true;
+  ui.standard.checked = false;
+  ui.filename.value = ui.preview.value;
+  ui.standardFields.hidden = true;
+  ui.customFields.hidden = false;
+});
+ui.preview.addEventListener("blur", updatePreview);
 ui.refresh.addEventListener("click", refresh);
 refresh();
