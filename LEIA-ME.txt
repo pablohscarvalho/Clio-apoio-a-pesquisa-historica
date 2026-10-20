@@ -1,0 +1,86 @@
+CLIO — APOIO À PESQUISA HISTÓRICA | versão 0.2.0
+
+SOBRE O PROJETO E O AUTOR
+Sou Pablo Carvalho, historiador e desenvolvedor. A Clio faz parte dos meus
+projetos de conectar História e Tecnologia, criando ferramentas a partir das
+necessidades práticas da pesquisa histórica.
+
+A extensão nasceu de uma dificuldade que encontrei durante minhas pesquisas
+na Hemeroteca Digital da Biblioteca Nacional: salvar as imagens dos jornais
+exigia etapas manuais repetitivas. Desenvolvi a Clio para simplificar essa
+coleta, melhorar a organização dos arquivos e acelerar o processo de pesquisa,
+permitindo dedicar mais tempo à leitura, à análise e à interpretação das fontes.
+
+Disponibilizo a ferramenta gratuitamente para ajudar outros pesquisadores,
+estudantes e pessoas interessadas em História em suas próprias investigações.
+
+Desenvolvido por Pablo Carvalho — @pablohscarvalho.
+Projeto independente, sem vínculo oficial com a Biblioteca Nacional.
+
+INSTALAÇÃO NO CHROME
+1. Extraia este ZIP para uma pasta permanente no computador.
+2. Digite chrome://extensions na barra de endereços.
+3. Ative "Modo do desenvolvedor" no canto superior direito.
+4. Clique em "Carregar sem compactação".
+5. Selecione a pasta hemeroteca-extensao, que contém manifest.json.
+6. No botão de extensões (quebra-cabeça), fixe "Clio — Apoio à Pesquisa Histórica".
+
+COMO USAR
+Abra o jornal no visualizador DocReader da Biblioteca Nacional e espere a imagem
+carregar. Clique na extensão, ajuste o nome se desejar e clique em "Baixar imagem".
+O Chrome abre a janela para escolher onde salvar. O download continua se o popup
+fechar. Confira a conclusão no painel de downloads do navegador.
+
+Depois de mudar a página ou o zoom, reabra a extensão ou clique em Atualizar.
+O botão Copiar dados reúne o título do visualizador, o endereço da consulta,
+o endereço da imagem e a data de acesso. Complete os dados da edição manualmente.
+
+QUALIDADE E IDENTIFICAÇÃO
+Salva o arquivo do endereço currentSrc/src de img#DocumentoImg, sem captura de
+tela, conversão ou recompressão. A resolução é a já carregada pelo visualizador:
+não força uma versão maior. Ajuste o zoom no jornal, aguarde e confira os pixels.
+O número hPagFis identifica a imagem na coleção; não é necessariamente o número
+da página impressa. A extensão não adivinha a data da edição pelo título geral.
+
+ESCOPO E PRIVACIDADE
+Permissões: activeTab para consultar a aba após seu clique; scripting para
+identificar a imagem; downloads para iniciar e acompanhar o arquivo solicitado.
+Não usa servidor próprio, código remoto, telemetria ou acesso permanente a sites.
+Funciona em domínios bn.gov.br e bn.br, com o elemento DocumentoImg.
+Não altera o site, não percorre edições e não remove restrições de acesso.
+
+SE NÃO FUNCIONAR
+Aguarde a imagem carregar e clique em Atualizar. Se o leitor estiver incorporado
+em uma página de outro domínio, abra o DocReader em sua própria aba.
+Se o download falhar, reabra a extensão para obter o endereço atual da imagem.
+Uma mudança futura na estrutura do site pode exigir atualização da extensão.
+
+VALIDAÇÃO
+Estrutura baseada na captura de tela fornecida: DocumentoImg e hPagFis.
+Código verificado localmente com simulações do DOM e das APIs do navegador.
+A instalação e o download no site real ainda precisam ser testados no seu Chrome.
+
+Referências técnicas:
+https://developer.chrome.com/docs/extensions/reference/api/downloads
+https://developer.chrome.com/docs/extensions/reference/api/scripting
+
+NOVIDADES DA VERSÃO 0.2.0
+Escolha entre nome padrão e personalizado com prévia do nome final.
+Padrão: veículo_período_baixado-AAAA-MM-DD_img-identificador.extensão.
+A data é a data local do download, não a data da edição do jornal.
+O período é extraído do título quando houver intervalo de anos reconhecível.
+Confira ou preencha os campos Veículo e Período quando necessário.
+Crédito: produzido por Pablo Carvalho — @pablohscarvalho.
+Ícone próprio de livro e lupa, com fonte SVG e PNGs de 16, 32, 48 e 128 pixels.
+
+PARA ATUALIZAR UMA INSTALAÇÃO EXISTENTE
+Extraia o ZIP e substitua os arquivos na pasta instalada anteriormente.
+Abra chrome://extensions e clique em Recarregar no cartão da extensão.
+Depois, volte ao jornal e clique no ícone de Clio.
+Se preferir instalar em uma pasta nova, remova a versão antiga e use
+Carregar sem compactação para selecionar a nova pasta hemeroteca-extensao.
+
+TESTES DESTA VERSÃO
+Sintaxe e fluxos de interface verificados com DOM e APIs Chrome simulados.
+Nomes padrão/personalizados, prévia, data local e ícones verificados.
+O teste integrado no navegador com o site real depende da instalação no Chrome.

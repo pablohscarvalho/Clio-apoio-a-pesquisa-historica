@@ -1,0 +1,26 @@
+{
+  "manifest_version": 3,
+  "name": "Clio — Apoio à Pesquisa Histórica",
+  "version": "0.2.0",
+  "description": "Salva a imagem carregada no DocReader da Biblioteca Nacional e copia os dados da consulta.",
+  "permissions": [
+    "activeTab",
+    "scripting",
+    "downloads"
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Clio — Apoio à Pesquisa Histórica",
+    "default_icon": {
+      "16": "icons/icon-16.png",
+      "32": "icons/icon-32.png"
+    }
+  },
+  "author": "Pablo Carvalho · @pablohscarvalho",
+  "icons": {
+    "16": "icons/icon-16.png",
+    "32": "icons/icon-32.png",
+    "48": "icons/icon-48.png",
+    "128": "icons/icon-128.png"
+  }
+}
